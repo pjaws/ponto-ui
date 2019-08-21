@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Grid, Box, Heading } from 'grommet';
+import { Grid, Box } from 'grommet';
+import Title from './Title';
+import Subtitle from './Subtitle';
 import LoginForm from './LoginForm';
 
 const Welcome = () => {
@@ -7,12 +9,12 @@ const Welcome = () => {
   return (
     <Grid justify='center'>
       <Box direction='column' width='medium'>
-        <Heading margin='none' textAlign='center'>
+        <Title level='1' size='1'>
           B2B e-commerce made simple.
-        </Heading>
-        <Heading level='2' textAlign='center' size='small'>
+        </Title>
+        <Subtitle level='2' size='3'>
           Log in or sign up to get started!
-        </Heading>
+        </Subtitle>
         {showLoginForm && <LoginForm />}
       </Box>
     </Grid>
