@@ -1,14 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Welcome from './Welcome';
 
 const App = ({ user }) => {
   return (
     <Router>
-      {user.isAuthenticated ? (
-        <Redirect to='/dashboard' />
-      ) : (
-        <Redirect to='/welcome' />
-      )}
+      <Route exact path='/' component={Welcome} />
+      <Route path='/welcome' component={Welcome} />
     </Router>
   );
 };
