@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, FormField, TextInput, Button } from 'grommet';
 
-const LoginForm = () => {
+const SignupForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleSubmit = evt => {
     evt.preventDefault();
@@ -9,13 +9,20 @@ const LoginForm = () => {
   };
   return (
     <Form onSubmit={handleSubmit}>
-      <FormField label='Email' htmlFor='loginEmail'>
-        <TextInput placeholder='Email address' id='loginEmail' type='email' />
+      <FormField label='Email' htmlFor='signupEmail'>
+        <TextInput placeholder='Email address' id='signupEmail' type='email' />
       </FormField>
-      <FormField label='Password' htmlFor='loginPassword'>
+      <FormField label='Password' htmlFor='signupPassword'>
         <TextInput
           placeholder='A very secure password'
-          id='loginPassword'
+          id='signupPassword'
+          type='password'
+        />
+      </FormField>
+      <FormField label='Confirm Password' htmlFor='signupConfirmPassword'>
+        <TextInput
+          placeholder='So nice, you typed it twice'
+          id='signupConfirmPassword'
           type='password'
         />
       </FormField>
@@ -29,4 +36,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SignupForm;
