@@ -1,0 +1,25 @@
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import Title from './Title';
+import ProductsTable from './ProductsTable';
+
+const Products = ({ getAllProducts, products }) => {
+  useEffect(() => {
+    getAllProducts();
+  }, [getAllProducts]);
+  return (
+    <>
+      <Title size={1} level={1}>
+        Products
+      </Title>
+      <ProductsTable products={products} />
+    </>
+  );
+};
+
+Products.propTypes = {
+  getAllProducts: PropTypes.func.isRequired,
+  products: PropTypes.array,
+};
+
+export default Products;

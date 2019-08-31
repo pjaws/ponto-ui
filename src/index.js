@@ -4,32 +4,30 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import { Grommet } from 'grommet';
-import { createGlobalStyle } from 'styled-components';
-import theme from './utils/theme';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { Router } from '@reach/router';
+import Welcome from './components/Welcome';
+import Products from './containers/Products';
+
 import reducer from './reducers';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 
 const middleware = [thunk, logger];
-const store = createStore(reducer, applyMiddleware(...middleware));
-
-const GlobalStyle = createGlobalStyle`
-  .main {
-    min-height: 100vh;
-  }
-  blockquote, body, dd, dl, dt, fieldset, figure, h1, h2, h3, h4, h5, h6, hr, html, iframe, legend, li, ol, p, pre, textarea, ul {
-    margin: 0;
-    padding: 0;
-  }
-`;
+const store = createStore(
+  reducer,
+  composeWithDevTools(applyMiddleware(...middleware)),
+);
 
 render(
   <Provider store={store}>
-    <Grommet theme={theme} className='main'>
-      <GlobalStyle />
-      <App />
-    </Grommet>
+    <Router>
+      <App path='/'>
+        <Welcome path='/' />
+        <Welcome path='/welcome' />
+        <Products path='/products' />
+      </App>
+    </Router>
   </Provider>,
   document.getElementById('root'),
 );

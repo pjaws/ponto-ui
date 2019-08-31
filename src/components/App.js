@@ -1,13 +1,24 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Welcome from './Welcome';
+import { Grommet } from 'grommet';
+import { createGlobalStyle } from 'styled-components';
+import theme from '../utils/theme';
 
-const App = ({ user }) => {
+const GlobalStyle = createGlobalStyle`
+  .main {
+    min-height: 100vh;
+  }
+  blockquote, body, dd, dl, dt, fieldset, figure, h1, h2, h3, h4, h5, h6, hr, html, iframe, legend, li, ol, p, pre, textarea, ul {
+    margin: 0;
+    padding: 0;
+  }
+`;
+
+const App = ({ children }) => {
   return (
-    <Router>
-      <Route exact path='/' component={Welcome} />
-      <Route path='/welcome' component={Welcome} />
-    </Router>
+    <Grommet theme={theme} className='main'>
+      <GlobalStyle />
+      {children}
+    </Grommet>
   );
 };
 
