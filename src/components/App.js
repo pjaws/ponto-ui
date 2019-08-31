@@ -1,6 +1,11 @@
 import React from 'react';
 import { Grommet } from 'grommet';
 import { createGlobalStyle } from 'styled-components';
+import { ConnectedRouter } from 'connected-react-router';
+import { Route } from 'react-router-dom';
+import { history } from '../store';
+import Welcome from './Welcome';
+import Products from '../containers/Products';
 import theme from '../utils/theme';
 
 const GlobalStyle = createGlobalStyle`
@@ -17,7 +22,13 @@ const App = ({ children }) => {
   return (
     <Grommet theme={theme} className='main'>
       <GlobalStyle />
-      {children}
+      <ConnectedRouter history={history}>
+        <Route exact path='/' component={App}>
+          <Route path='/' component={Welcome} />
+          <Route path='/welcome' component={Welcome} />
+          <Route path='/products' component={Products} />
+        </Route>
+      </ConnectedRouter>
     </Grommet>
   );
 };
