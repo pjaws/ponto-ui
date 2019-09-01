@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Table, TableHeader, TableBody, TableRow, TableCell } from 'grommet';
 
 const ProductsTable = ({ products }) => {
@@ -22,6 +23,10 @@ const ProductsTable = ({ products }) => {
       </TableBody>
     </Table>
   );
+};
+
+ProductsTable.propTypes = {
+  products: PropTypes.array.isRequired,
 };
 
 export default ProductsTable;

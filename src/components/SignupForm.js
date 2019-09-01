@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import { Form, FormField, TextInput, Button } from 'grommet';
 import * as Yup from 'yup';
 
@@ -15,9 +15,14 @@ const SignupSchema = Yup.object().shape({
 const SignupForm = ({ signup }) => {
   const onSubmit = async (values, { setSubmitting }) => {
     setSubmitting(true);
-    const result = await signup(values);
-    setSubmitting(false);
-    console.log(result);
+    try {
+      const result = await signup(values);
+      setSubmitting(false);
+      console.log(result);
+    } catch (error) {
+      setSubmitting(false);
+      console.log(error);
+    }
   };
   return (
     <Formik
@@ -69,7 +74,7 @@ const SignupForm = ({ signup }) => {
             type='submit'
             disabled={isSubmitting}
             primary
-            label='Let me in!'
+            label='Sign me up!'
           />
         </Form>
       )}

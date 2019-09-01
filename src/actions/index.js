@@ -1,81 +1,38 @@
+import feathers, { feathersServices } from '../feathers';
+import { push } from 'connected-react-router';
 import * as types from '../constants/ActionTypes';
-import AuthService from '../utils/AuthService';
-import ProductService from '../utils/ProductService';
 
-export const requestLogin = creds => {
-  return {
-    type: types.LOGIN_REQUEST,
-    payload: creds,
-  };
-};
+const loginSuccess = response => ({
+  type: types.SERVICES_AUTHENTICATE_AUTHENTICATION_FULFILLED,
+  payload: response,
+});
 
-export const requestSignup = creds => {
-  return {
-    type: types.SIGNUP_REQUEST,
-    payload: creds,
-  };
-};
+const loginFailure = error => ({
+  type: types.SERVICES_AUTHENTICATE_AUTHENTICATION_REJECTED,
+  payload: error,
+  error: true,
+});
 
-const signupSuccess = user => {
-  return {
-    type: types.SIGNUP_SUCCESS,
-    payload: {
-      user,
-    },
-  };
-};
-
-const signupFailure = error => {
-  return {
-    type: types.SIGNUP_FAILURE,
-    payload: error,
-    error: true,
-  };
-};
-
-export const signup = creds => async dispatch => {
-  dispatch(requestSignup(creds));
-
+export const login = creds => async dispatch => {
+  dispatch({ type: types.SERVICES_AUTHENTICATE_AUTHENTICATION_PENDING });
   try {
-    const user = await AuthService.signup(creds);
-
-    return dispatch(signupSuccess(user));
-  } catch (error) {
-    return dispatch(signupFailure);
+    const response = await feathers.authenticate({
+      strategy: 'local',
+      ...creds,
+    });
+    dispatch(loginSuccess(response));
+    dispatch(push('/products'));
+  } catch (err) {
+    console.log(err);
+    dispatch(loginFailure(err));
   }
 };
 
-const requestGetProducts = () => {
-  return {
-    type: types.GET_PRODUCTS_REQUEST,
-  };
-};
-
-const getProductsSuccess = products => {
-  return {
-    type: types.GET_PRODUCTS_SUCCESS,
-    payload: {
-      products,
-    },
-  };
-};
-
-const getProductsFailure = error => {
-  return {
-    type: types.GET_PRODUCTS_FAILURE,
-    payload: error,
-    error: true,
-  };
-};
-
-export const getAllProducts = () => async dispatch => {
-  dispatch(requestGetProducts());
-
+export const signup = creds => async dispatch => {
   try {
-    const products = await ProductService.getAll();
-
-    return dispatch(getProductsSuccess(products));
-  } catch (error) {
-    return dispatch(getProductsFailure(error));
+    await dispatch(feathersServices.users.create(creds));
+    login(creds);
+  } catch (err) {
+    console.log(err);
   }
 };

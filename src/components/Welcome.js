@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Grid, Box, Anchor } from 'grommet';
 import Title from './Title';
 import Subtitle from './Subtitle';
-import LoginForm from './LoginForm';
+import LoginForm from '../containers/LoginForm';
 import SignupForm from '../containers/SignupForm';
 
 const Welcome = () => {

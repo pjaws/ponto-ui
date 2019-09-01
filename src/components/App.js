@@ -23,11 +23,9 @@ const App = ({ children }) => {
     <Grommet theme={theme} className='main'>
       <GlobalStyle />
       <ConnectedRouter history={history}>
-        <Route exact path='/' component={App}>
-          <Route path='/' component={Welcome} />
-          <Route path='/welcome' component={Welcome} />
-          <Route path='/products' component={Products} />
-        </Route>
+        <Route exact path='/' component={Welcome} />
+        <Route path='/welcome' component={Welcome} />
+        <Route path='/products' component={Products} />
       </ConnectedRouter>
     </Grommet>
   );
