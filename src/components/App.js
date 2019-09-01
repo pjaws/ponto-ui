@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import { history } from '../store';
 import Welcome from './Welcome';
 import Products from '../containers/Products';
+import Product from '../containers/Product';
 import theme from '../utils/theme';
 
 const GlobalStyle = createGlobalStyle`
@@ -26,6 +27,7 @@ const App = ({ children }) => {
         <Route exact path='/' component={Welcome} />
         <Route path='/welcome' component={Welcome} />
         <Route path='/products' component={Products} />
+        <Route path='/products/:productId' component={Product} />
       </ConnectedRouter>
     </Grommet>
   );
