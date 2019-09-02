@@ -21,7 +21,7 @@ export const login = creds => async dispatch => {
       ...creds,
     });
     dispatch(loginSuccess(response));
-    dispatch(push('/products'));
+    dispatch(push('/app/products'));
   } catch (err) {
     console.log(err);
     dispatch(loginFailure(err));
