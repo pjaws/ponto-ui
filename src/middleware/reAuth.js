@@ -1,5 +1,6 @@
 import app from '../feathers';
 import { push } from 'connected-react-router';
+import { logout } from '../actions';
 import { SERVICES_AUTHENTICATE_AUTHENTICATION_FULFILLED } from '../constants/ActionTypes';
 
 const reAuth = store => next => action => {
@@ -25,8 +26,12 @@ const reAuth = store => next => action => {
       })
       .catch(err => {
         console.log(`Error ReAuthenticating`, err);
+        store.dispatch(logout());
         store.dispatch(push('/'));
+        next(action);
       });
+  } else {
+    next(action);
   }
 };
 

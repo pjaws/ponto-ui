@@ -30,9 +30,17 @@ export const login = creds => async dispatch => {
 
 export const signup = creds => async dispatch => {
   try {
-    await dispatch(feathersServices.users.create(creds));
-    login(creds);
+    const result = await dispatch(feathersServices.users.create(creds));
+    dispatch(login(creds));
+    return result;
   } catch (err) {
     console.log(err);
   }
+};
+
+export const logout = () => {
+  feathers.logout();
+  return {
+    types: types.SERVICES_AUTHENTICATE_LOGOUT,
+  };
 };

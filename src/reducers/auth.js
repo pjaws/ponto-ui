@@ -23,6 +23,7 @@ const authReducer = (state = initialState, action) => {
         accessToken: action.payload.accessToken,
       };
     case types.SERVICES_AUTHENTICATE_AUTHENTICATION_REJECTED:
+    case types.SERVICES_AUTHENTICATE_LOGOUT:
       return {
         ...state,
         isLoading: false,
