@@ -3,7 +3,7 @@ import { feathersServices } from '../feathers';
 import Products from '../components/Products';
 
 const mapStateToProps = state => ({
-  products: state.products.data,
+  products: state.products.queryResult.data,
 });
 
 const mapDispatchToProps = dispatch => ({

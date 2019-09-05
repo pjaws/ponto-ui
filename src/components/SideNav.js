@@ -5,6 +5,7 @@ import SideNavButton from './SideNavButton';
 import colors from '../utils/colors';
 
 const StyledSideNav = styled.nav`
+  grid-area: nav;
   display: flex;
   flex-direction: column;
   height: 100%;

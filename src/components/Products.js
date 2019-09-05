@@ -9,7 +9,7 @@ const Products = ({ getAllProducts, products }) => {
   }, [getAllProducts]);
   return (
     <>
-      <Title size={1} level={1}>
+      <Title size='2' level='1'>
         Products
       </Title>
       {products && <ProductsTable products={products} />}
