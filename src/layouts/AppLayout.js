@@ -22,7 +22,8 @@ const StyledAppLayout = styled.div`
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
-  grid-area: 'content';
+  grid-area: content;
+  padding: 2rem;
 `;
 
 const AppLayout = () => {
