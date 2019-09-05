@@ -7,12 +7,9 @@ const reAuth = store => next => action => {
   const state = store.getState();
 
   // if they refreshed the page and cleared this info out of the store, but are still authenticated
-  if (
-    state.auth.accessToken &&
-    (!state.auth.isAuthenticated || !state.auth.user)
-  ) {
+  if (window.localStorage.getItem('feathers-jwt') && !state.auth.accessToken) {
     app
-      .reAuthenticate()
+      .reAuthenticate({ strategy: 'jwt' })
       .then(result => {
         console.log(`ReAuthenticate`, result);
         store.dispatch({

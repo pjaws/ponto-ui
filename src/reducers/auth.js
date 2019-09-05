@@ -4,7 +4,7 @@ const initialState = {
   isLoading: false,
   isAuthenticated: false,
   user: null,
-  accessToken: window.localStorage.getItem('feathers-jwt') || null,
+  accessToken: null,
 };
 
 const authReducer = (state = initialState, action) => {
