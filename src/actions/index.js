@@ -41,6 +41,6 @@ export const signup = creds => async dispatch => {
 export const logout = () => {
   feathers.logout();
   return {
-    types: types.SERVICES_AUTHENTICATE_LOGOUT,
+    type: types.SERVICES_AUTHENTICATE_LOGOUT,
   };
 };
