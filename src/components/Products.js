@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Title from './Title';
+import AppPageHeader from './AppPageHeader';
+import AppPageSection from './AppPageSection';
 import ProductsTable from './ProductsTable';
+import NoDataMsg from './NoDataMsg';
 
 const Products = ({ getAllProducts, products }) => {
   useEffect(() => {
@@ -9,10 +11,11 @@ const Products = ({ getAllProducts, products }) => {
   }, [getAllProducts]);
   return (
     <>
-      <Title size='2' level='1'>
-        Products
-      </Title>
-      {products && <ProductsTable products={products} />}
+      <AppPageHeader title='Products' />
+      <AppPageSection>
+        {products.length && <ProductsTable products={products} />}
+        {!products.length && <NoDataMsg resource='products' />}
+      </AppPageSection>
     </>
   );
 };
