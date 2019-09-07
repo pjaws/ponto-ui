@@ -13,7 +13,7 @@ const Products = ({ getAllProducts, products }) => {
     <>
       <AppPageHeader title='Products' />
       <AppPageSection>
-        {products.length && <ProductsTable products={products} />}
+        {!!products.length && <ProductsTable products={products} />}
         {!products.length && <NoDataMsg resource='products' />}
       </AppPageSection>
     </>
