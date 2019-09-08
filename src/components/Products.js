@@ -5,13 +5,18 @@ import AppPageSection from './AppPageSection';
 import ProductsTable from './ProductsTable';
 import NoDataMsg from './NoDataMsg';
 
-const Products = ({ getAllProducts, products }) => {
+const Products = ({ getAllProducts, addProduct, products }) => {
   useEffect(() => {
     getAllProducts();
   }, [getAllProducts]);
+
   return (
     <>
-      <AppPageHeader title='Products' />
+      <AppPageHeader
+        title='Products'
+        btnLabel='Add Product'
+        btnFunction={addProduct}
+      />
       <AppPageSection>
         {!!products.length && <ProductsTable products={products} />}
         {!products.length && <NoDataMsg resource='products' />}
@@ -22,6 +27,7 @@ const Products = ({ getAllProducts, products }) => {
 
 Products.propTypes = {
   getAllProducts: PropTypes.func.isRequired,
+  addProduct: PropTypes.func.isRequired,
   products: PropTypes.array,
 };
 

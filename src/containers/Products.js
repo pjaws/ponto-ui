@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { feathersServices } from '../feathers';
+import { push } from 'connected-react-router';
 import Products from '../components/Products';
 
 const mapStateToProps = state => ({
@@ -8,6 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getAllProducts: () => dispatch(feathersServices.products.find()),
+  addProduct: () => dispatch(push('/app/products/new')),
 });
 
 export default connect(

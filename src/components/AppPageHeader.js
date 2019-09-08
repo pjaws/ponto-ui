@@ -7,14 +7,16 @@ import Title from './Title';
 const StyledAppPageHeader = styled.header`
   display: flex;
   flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const TitleWrap = styled.div`
-  align-self: flex-start;
+  /* align-self: flex-start; */
 `;
 
 const ButtonWrap = styled.div`
-  align-self: flex-end;
+  /* align-self: flex-end; */
 `;
 
 const AppPageHeader = ({ title, btnFunction, btnLabel, btnDisabled }) => {

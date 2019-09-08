@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import SideNav from '../components/SideNav';
 import Products from '../containers/Products';
 import Product from '../containers/Product';
+import AddProduct from '../pages/AddProduct';
 
 const StyledAppLayout = styled.div`
   display: grid;
@@ -32,7 +33,8 @@ const AppLayout = () => {
       <SideNav />
       <StyledContainer>
         <Route path='/app/products' component={Products} />
-        <Route path='/app/products/:productId' component={Product} />
+        <Route path='/app/products/new' component={AddProduct} />
+        <Route path='/app/products/:productId([0-9]+)' component={Product} />
       </StyledContainer>
     </StyledAppLayout>
   );
