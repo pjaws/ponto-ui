@@ -32,7 +32,7 @@ const AppLayout = () => {
     <StyledAppLayout>
       <SideNav />
       <StyledContainer>
-        <Route path='/app/products' component={Products} />
+        <Route exact path='/app/products' component={Products} />
         <Route path='/app/products/new' component={AddProduct} />
         <Route path='/app/products/:productId([0-9]+)' component={Product} />
       </StyledContainer>
