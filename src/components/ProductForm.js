@@ -80,7 +80,7 @@ const ProductForm = ({ product, onSave }) => {
                 type='text'
                 name='title'
                 onChange={handleChange}
-                onBlue={handleBlur}
+                onBlur={handleBlur}
                 value={values.title}
               />
             </FormField>
@@ -97,7 +97,7 @@ const ProductForm = ({ product, onSave }) => {
                 type='text'
                 name='description'
                 onChange={handleChange}
-                onBlue={handleBlur}
+                onBlur={handleBlur}
                 value={values.description}
               />
             </FormField>
@@ -119,7 +119,7 @@ const ProductForm = ({ product, onSave }) => {
                 type='text'
                 name='sku'
                 onChange={handleChange}
-                onBlue={handleBlur}
+                onBlur={handleBlur}
                 value={values.variants[0].sku}
               />
             </FormField>
