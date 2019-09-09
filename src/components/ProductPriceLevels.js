@@ -14,7 +14,7 @@ const ProductPriceLevels = ({
   return (
     <Card>
       {priceLevels.map((level, idx) => (
-        <>
+        <div key={idx}>
           <FormField
             label='Name'
             htmlFor={`priceLevelName${idx}`}
@@ -54,7 +54,7 @@ const ProductPriceLevels = ({
               value={values.variants[variantIdx].priceLevels[idx].price}
             />
           </FormField>
-        </>
+        </div>
       ))}
       <Button label='Add another price level' />
     </Card>
