@@ -3,6 +3,9 @@ import { Formik } from 'formik';
 import { Form, FormField, TextInput, TextArea, Button } from 'grommet';
 import * as Yup from 'yup';
 import Card from './Card';
+import CardTitle from './CardTitle';
+import Container from './Container';
+import Column from './Column';
 import ProductPriceLevels from './ProductPriceLevels';
 
 const ProductSchema = Yup.object().shape({
@@ -68,79 +71,129 @@ const ProductForm = ({ product, onSave }) => {
       }) => (
         <Form onSubmit={handleSubmit}>
           <Card>
-            Basic Info
-            <FormField
-              label='Title'
-              htmlFor='productTitle'
-              error={errors.title && touched.title && errors.title}
-            >
-              <TextInput
-                placeholder='Awesome Product'
-                id='productTitle'
-                type='text'
-                name='title'
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.title}
-              />
-            </FormField>
-            <FormField
-              label='Description'
-              htmlFor='productDescription'
-              error={
-                errors.description && touched.description && errors.description
-              }
-            >
-              <TextArea
-                placeholder='Tell us about Awesome Product'
-                id='productDescription'
-                type='text'
-                name='description'
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.description}
-              />
-            </FormField>
+            <CardTitle>Basic Info</CardTitle>
+            <Container direction='row'>
+              <Column width='50%'>
+                <FormField
+                  label='Title'
+                  htmlFor='productTitle'
+                  error={errors.title && touched.title && errors.title}
+                >
+                  <TextInput
+                    placeholder='Awesome Product'
+                    id='productTitle'
+                    type='text'
+                    name='title'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.title}
+                  />
+                </FormField>
+              </Column>
+              <Column width='50%'>
+                <FormField
+                  label='Product Type'
+                  htmlFor='productType'
+                  error={errors.type && touched.type && errors.type}
+                >
+                  <TextInput
+                    placeholder='Toys'
+                    id='productType'
+                    type='text'
+                    name='type'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.type}
+                  />
+                </FormField>
+              </Column>
+            </Container>
+            <Container direction='row'>
+              <Column width='50%'>
+                <FormField
+                  label='Description'
+                  htmlFor='productDescription'
+                  error={
+                    errors.description &&
+                    touched.description &&
+                    errors.description
+                  }
+                >
+                  <TextArea
+                    placeholder='Tell us about Awesome Product'
+                    id='productDescription'
+                    type='text'
+                    name='description'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.description}
+                  />
+                </FormField>
+              </Column>
+              <Column width='50%'>
+                <FormField
+                  label='Vendor'
+                  htmlFor='productVendor'
+                  error={errors.vendor && touched.vendor && errors.vendor}
+                >
+                  <TextInput
+                    placeholder='ACME LLC'
+                    id='productVendor'
+                    type='text'
+                    name='vendor'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.vendor}
+                  />
+                </FormField>
+              </Column>
+            </Container>
           </Card>
           <Card>
-            Inventory
-            <FormField
-              label='SKU'
-              htmlFor='productSku'
-              //   error={
-              //     errors.variants[0].sku &&
-              //     touched.variants[0].sku &&
-              //     errors.variants[0].sku
-              //   }
-            >
-              <TextInput
-                placeholder='AWE-PRO'
-                id='productSku'
-                type='text'
-                name='sku'
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.variants[0].sku}
-              />
-            </FormField>
-            <FormField
-              label='Inventory'
-              htmlFor='productInventory'
-              //   error={
-              //     errors.variants[0].inventoryQuanity &&
-              //     touched.variants[0].inventoryQuanity &&
-              //     errors.variants[0].inventoryQuanity
-              //   }
-            >
-              <TextInput
-                id='productInventory'
-                type='number'
-                name='productInventory'
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.variants[0].inventoryQuanity}
-              />
-            </FormField>
+            <CardTitle>Inventory</CardTitle>
+            <Container direction='row'>
+              <Column width='33%'>
+                <FormField
+                  label='SKU'
+                  htmlFor='variants[0].sku'
+                  //   error={
+                  //     errors.variants[0].sku &&
+                  //     touched.variants[0].sku &&
+                  //     errors.variants[0].sku
+                  //   }
+                >
+                  <TextInput
+                    placeholder='AWE-PRO'
+                    id='variants[0].sku'
+                    type='text'
+                    name='variants[0].sku'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.variants[0].sku}
+                  />
+                </FormField>
+              </Column>
+              <Column width='33%'>
+                <FormField
+                  label='Inventory'
+                  htmlFor='variants[0].inventoryQuantity'
+                  //   error={
+                  //     errors.variants[0].inventoryQuanity &&
+                  //     touched.variants[0].inventoryQuanity &&
+                  //     errors.variants[0].inventoryQuanity
+                  //   }
+                >
+                  <TextInput
+                    id='variants[0].inventoryQuantity'
+                    type='number'
+                    name='variants[0].inventoryQuantity'
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.variants[0].inventoryQuanity}
+                  />
+                </FormField>
+              </Column>
+            </Container>
           </Card>
           <ProductPriceLevels
             priceLevels={product.variants[0].priceLevels}

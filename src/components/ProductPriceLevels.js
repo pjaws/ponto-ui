@@ -20,7 +20,7 @@ const ProductPriceLevels = ({
           <Column width='50%'>
             <FormField
               label='Name'
-              htmlFor={`priceLevelName${idx}`}
+              htmlFor={`variants[${variantIdx}].priceLevels[${idx}].name`}
               // error={
               //   errors.priceLevels[idx].name &&
               //   touched.priceLevels[idx].name &&
@@ -28,9 +28,9 @@ const ProductPriceLevels = ({
               // }
             >
               <TextInput
-                id={`priceLevelName${idx}`}
+                id={`variants[${variantIdx}].priceLevels[${idx}].name`}
                 type='text'
-                name={`priceLevelName${idx}`}
+                name={`variants[${variantIdx}].priceLevels[${idx}].name`}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.variants[variantIdx].priceLevels[idx].name}
@@ -54,8 +54,8 @@ const ProductPriceLevels = ({
                   { fixed: '.' },
                   { regexp: /^[0-9]+$|^[0-9]+$/, placeholder: '00' },
                 ]}
-                id={`priceLevelPrice${idx}`}
-                name={`priceLevelPrice${idx}`}
+                id={`variants[${variantIdx}].priceLevels[${idx}].price`}
+                name={`variants[${variantIdx}].priceLevels[${idx}].price`}
                 value={values.variants[variantIdx].priceLevels[idx].price}
               />
             </FormField>

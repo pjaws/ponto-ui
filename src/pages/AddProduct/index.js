@@ -16,8 +16,8 @@ const mapStateToProps = () => ({
         inventoryQuantity: 0,
         position: 1,
         priceLevels: [
-          { name: 'Cost', price: 0.0 },
-          { name: 'Retail', price: 0.0 },
+          { name: 'Cost', price: '$0.00' },
+          { name: 'Retail', price: '$0.00' },
         ],
       },
     ],

@@ -1,7 +1,10 @@
 import app from '../feathers';
 import { push } from 'connected-react-router';
 import { logout } from '../actions';
-import { SERVICES_AUTHENTICATE_AUTHENTICATION_FULFILLED } from '../constants/ActionTypes';
+import {
+  SERVICES_AUTHENTICATE_AUTHENTICATION_PENDING,
+  SERVICES_AUTHENTICATE_AUTHENTICATION_FULFILLED,
+} from '../constants/ActionTypes';
 
 const reAuth = store => next => action => {
   const state = store.getState();
@@ -12,6 +15,7 @@ const reAuth = store => next => action => {
     !state.auth.accessToken &&
     !state.auth.isLoading
   ) {
+    // store.dispatch({ type: SERVICES_AUTHENTICATE_AUTHENTICATION_PENDING });
     app
       .reAuthenticate({ strategy: 'jwt' })
       .then(result => {
