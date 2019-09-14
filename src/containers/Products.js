@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   getAllProducts: () => dispatch(feathersServices.products.find()),
   addProduct: () => dispatch(push('/app/products/new')),
+  importProducts: () => dispatch(push('/app/products/import')),
 });
 
 export default connect(

@@ -5,7 +5,7 @@ import AppPageSection from './AppPageSection';
 import ProductsTable from './ProductsTable';
 import NoDataMsg from './NoDataMsg';
 
-const Products = ({ getAllProducts, addProduct, products }) => {
+const Products = ({ getAllProducts, addProduct, importProducts, products }) => {
   useEffect(() => {
     getAllProducts();
   }, [getAllProducts]);
@@ -14,8 +14,11 @@ const Products = ({ getAllProducts, addProduct, products }) => {
     <>
       <AppPageHeader
         title='Products'
-        btnLabel='Add Product'
-        btnFunction={addProduct}
+        primaryBtnLabel='Add Product'
+        primaryBtnFunction={addProduct}
+        primaryBtnDisabled={true}
+        secondaryBtnLabel='Import Products'
+        secondaryBtnFunction={importProducts}
       />
       <AppPageSection>
         {!!products.length && <ProductsTable products={products} />}

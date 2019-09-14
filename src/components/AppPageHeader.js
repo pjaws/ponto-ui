@@ -16,10 +16,20 @@ const TitleWrap = styled.div`
 `;
 
 const ButtonWrap = styled.div`
-  /* align-self: flex-end; */
+  > button:last-child {
+    margin-left: 2rem;
+  }
 `;
 
-const AppPageHeader = ({ title, btnFunction, btnLabel, btnDisabled }) => {
+const AppPageHeader = ({
+  title,
+  primaryBtnFunction,
+  primaryBtnLabel,
+  primaryBtnDisabled,
+  secondaryBtnFunction,
+  secondaryBtnLabel,
+  secondaryBtnDisabled,
+}) => {
   return (
     <StyledAppPageHeader>
       <TitleWrap>
@@ -27,17 +37,25 @@ const AppPageHeader = ({ title, btnFunction, btnLabel, btnDisabled }) => {
           {title}
         </Title>
       </TitleWrap>
-      {btnFunction && (
-        <ButtonWrap>
+      <ButtonWrap>
+        {secondaryBtnFunction && (
+          <Button
+            type='button'
+            label={secondaryBtnLabel}
+            disabled={secondaryBtnDisabled}
+            onClick={secondaryBtnFunction}
+          />
+        )}
+        {primaryBtnFunction && (
           <Button
             type='button'
             primary
-            label={btnLabel}
-            disabled={btnDisabled}
-            onClick={btnFunction}
+            label={primaryBtnLabel}
+            disabled={primaryBtnDisabled}
+            onClick={primaryBtnFunction}
           />
-        </ButtonWrap>
-      )}
+        )}
+      </ButtonWrap>
     </StyledAppPageHeader>
   );
 };

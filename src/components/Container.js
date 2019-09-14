@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: ${props => props.direction};
+  justify-content: ${props => props.justify};
 `;
 
 const Container = ({ children, ...rest }) => {
