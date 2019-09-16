@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import { history } from '../store';
 import AppLayout from '../layouts/AppLayout';
 import Welcome from './Welcome';
+import ShopifyCallback from '../containers/ShopifyCallback';
 import theme from '../utils/theme';
 
 const GlobalStyle = createGlobalStyle`
@@ -28,6 +29,7 @@ const App = ({ children }) => {
       <ConnectedRouter history={history}>
         <Route exact path='/' component={Welcome} />
         <Route path='/welcome' component={Welcome} />
+        <Route path='/shopify-callback' component={ShopifyCallback} />
         <Route path='/app' component={AppLayout} />
       </ConnectedRouter>
     </Grommet>

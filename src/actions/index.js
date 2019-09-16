@@ -1,5 +1,6 @@
 import feathers, { feathersServices } from '../feathers';
 import { push } from 'connected-react-router';
+import axios from 'axios';
 import * as types from '../constants/ActionTypes';
 
 const loginSuccess = response => ({
@@ -43,26 +44,4 @@ export const logout = () => {
   return {
     type: types.SERVICES_AUTHENTICATE_LOGOUT,
   };
-};
-
-export const connectToShopify = (shop, currPage) => async dispatch => {
-  dispatch({
-    type: types.SHOPIFY_CONNECT_PENDING,
-    payload: { shop, currPage },
-  });
-  try {
-    const result = await dispatch(
-      feathersServices.shopifyImport.create({ shop, currPage }),
-    );
-    dispatch({
-      type: types.SHOPIFY_CONNECT_FULFILLED,
-      payload: result,
-    });
-  } catch (err) {
-    dispatch({
-      type: types.SHOPIFY_CONNECT_REJECTED,
-      payload: err,
-      error: true,
-    });
-  }
 };
