@@ -1,10 +1,4 @@
-import app from '../feathers';
-import { push } from 'connected-react-router';
 import { reAuth } from '../actions';
-import {
-  SERVICES_AUTHENTICATE_AUTHENTICATION_PENDING,
-  SERVICES_AUTHENTICATE_AUTHENTICATION_FULFILLED,
-} from '../constants/ActionTypes';
 
 const reAuthMiddleware = store => next => action => {
   const state = store.getState();
