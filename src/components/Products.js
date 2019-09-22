@@ -4,11 +4,19 @@ import AppPageHeader from './AppPageHeader';
 import AppPageSection from './AppPageSection';
 import ProductsTable from './ProductsTable';
 import NoDataMsg from './NoDataMsg';
+import LoadingTable from './LoadingTable';
 
-const Products = ({ getAllProducts, addProduct, importProducts, products }) => {
+const Products = ({
+  findProducts,
+  isLoading,
+  addProduct,
+  importProducts,
+  products,
+  linkToProduct,
+}) => {
   useEffect(() => {
-    getAllProducts();
-  }, [getAllProducts]);
+    findProducts();
+  }, [findProducts]);
 
   return (
     <>
@@ -21,17 +29,23 @@ const Products = ({ getAllProducts, addProduct, importProducts, products }) => {
         secondaryBtnFunction={importProducts}
       />
       <AppPageSection>
-        {!!products.length && <ProductsTable products={products} />}
-        {!products.length && <NoDataMsg resource='products' />}
+        {isLoading && <LoadingTable />}
+        {!!products.length && (
+          <ProductsTable products={products} linkToProduct={linkToProduct} />
+        )}
+        {!products.length && !isLoading && <NoDataMsg resource='products' />}
       </AppPageSection>
     </>
   );
 };
 
 Products.propTypes = {
-  getAllProducts: PropTypes.func.isRequired,
+  findProducts: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   addProduct: PropTypes.func.isRequired,
+  importProducts: PropTypes.func.isRequired,
   products: PropTypes.array,
+  linkToProduct: PropTypes.func,
 };
 
 export default Products;

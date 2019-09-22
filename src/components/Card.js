@@ -10,8 +10,8 @@ const StyledCard = styled.div`
     0 1px 3px 0 rgba(61, 61, 78, 0.15);
 `;
 
-const Card = ({ children }) => {
-  return <StyledCard>{children}</StyledCard>;
+const Card = ({ children, ...rest }) => {
+  return <StyledCard {...rest}>{children}</StyledCard>;
 };
 
 export default Card;
