@@ -6,13 +6,15 @@ const StyledTableRow = styled.tr`
   cursor: pointer;
 
   &:hover {
-    background: ${props => (props.hover ? colors.gray[1] : 'inherit')};
+    background: ${props => (props.hover ? colors.gray[0] : 'inherit')};
   }
   &:last-child > td {
     border-bottom: none;
   }
 `;
 
-const TableRow = ({ children }) => <StyledTableRow>{children}</StyledTableRow>;
+const TableRow = ({ children, ...rest }) => (
+  <StyledTableRow {...rest}>{children}</StyledTableRow>
+);
 
 export default TableRow;
