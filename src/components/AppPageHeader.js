@@ -33,7 +33,7 @@ const AppPageHeader = ({
   return (
     <StyledAppPageHeader>
       <TitleWrap>
-        <Title size='2' level='1'>
+        <Title size='3' level='1'>
           {title}
         </Title>
       </TitleWrap>
