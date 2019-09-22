@@ -3,13 +3,13 @@ import { connectRouter } from 'connected-react-router';
 import { feathersServices } from '../feathers';
 import authReducer from './auth';
 // import user from './user';
-// import products from './products';
+import productsReducer from './products';
 
 const createRootReducer = history =>
   combineReducers({
     router: connectRouter(history),
     users: feathersServices.users.reducer,
-    products: feathersServices.products.reducer,
+    products: productsReducer,
     auth: authReducer,
   });
 

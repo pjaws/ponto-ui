@@ -1,24 +1,20 @@
 import { connect } from 'react-redux';
-import { feathersServices } from '../feathers';
 import { push } from 'connected-react-router';
+import { findProducts } from '../actions/products';
 import Products from '../components/Products';
 
 const mapStateToProps = state => {
-  if (!state.products.queryResult) {
-    return {
-      error: state.products.isError,
-      products: [],
-    };
-  }
   return {
-    products: state.products.queryResult.data,
+    isLoading: state.products.isLoading,
+    products: state.products.data,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  getAllProducts: () => dispatch(feathersServices.products.find()),
+  findProducts: filter => dispatch(findProducts(filter)),
   addProduct: () => dispatch(push('/app/products/new')),
   importProducts: () => dispatch(push('/app/products/import')),
+  linkToProduct: productId => dispatch(push(`/app/products/${productId}`)),
 });
 
 export default connect(
