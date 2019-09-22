@@ -8,8 +8,9 @@ import TableBody from './TableBody';
 import TableCell from './TableCell';
 import Card from './Card';
 import Truncate from './Truncate';
+import { Link } from 'react-router-dom';
 
-const ProductsTable = ({ products }) => {
+const ProductsTable = ({ products, linkToProduct }) => {
   return (
     <Card>
       <Table alignSelf='center'>
@@ -23,7 +24,11 @@ const ProductsTable = ({ products }) => {
         <TableBody>
           {/* TODO: calculate inventory from variants */}
           {products.map(product => (
-            <TableRow key={product.id} hover>
+            <TableRow
+              key={product.id}
+              hover
+              onClick={() => linkToProduct(product.id)}
+            >
               <TableCell>{product.title}</TableCell>
               <TableCell>
                 <Truncate max={60}>{product.description}</Truncate>
@@ -39,6 +44,7 @@ const ProductsTable = ({ products }) => {
 
 ProductsTable.propTypes = {
   products: PropTypes.array.isRequired,
+  linkToProduct: PropTypes.func.isRequired,
 };
 
 export default ProductsTable;
