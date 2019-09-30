@@ -39,8 +39,8 @@ export const signup = creds => async dispatch => {
   }
 };
 
-export const logout = () => {
-  feathers.logout();
+export const logout = () => async dispatch => {
+  await feathers.logout();
   return {
     type: types.SERVICES_AUTHENTICATE_LOGOUT,
   };
@@ -64,6 +64,6 @@ export const reAuth = () => dispatch => {
     .catch(err => {
       console.log(`Error ReAuthenticating`, err);
       dispatch(logout());
-      dispatch(push('/'));
+      // dispatch(push('/'));
     });
 };
