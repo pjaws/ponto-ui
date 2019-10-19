@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import AppPageHeader from './AppPageHeader';
-import AppPageSection from './AppPageSection';
-import ProductsTable from './ProductsTable';
-import NoDataMsg from './NoDataMsg';
-import LoadingTable from './LoadingTable';
+import AppPageHeader from '../components/AppPageHeader';
+import AppPageSection from '../components/AppPageSection';
+import ProductsTable from '../components/ProductsTable';
+import NoDataMsg from '../components/NoDataMsg';
+import LoadingTable from '../components/LoadingTable';
 
 const Products = ({
   findProducts,
@@ -21,11 +21,11 @@ const Products = ({
   return (
     <>
       <AppPageHeader
-        title='Products'
-        primaryBtnLabel='Add Product'
+        title="Products"
+        primaryBtnLabel="Add Product"
         primaryBtnFunction={addProduct}
         primaryBtnDisabled={true}
-        secondaryBtnLabel='Import Products'
+        secondaryBtnLabel="Import Products"
         secondaryBtnFunction={importProducts}
       />
       <AppPageSection>
@@ -33,7 +33,7 @@ const Products = ({
         {!!products.length && (
           <ProductsTable products={products} linkToProduct={linkToProduct} />
         )}
-        {!products.length && !isLoading && <NoDataMsg resource='products' />}
+        {!products.length && !isLoading && <NoDataMsg resource="products" />}
       </AppPageSection>
     </>
   );

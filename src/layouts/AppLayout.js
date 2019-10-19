@@ -2,8 +2,8 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 import SideNav from '../components/SideNav';
-import Products from '../containers/Products';
-import Product from '../containers/Product';
+import Products from '../pages/Products';
+import Product from '../pages/Product';
 import ImportProducts from '../pages/ImportProducts';
 import AddProduct from '../pages/AddProduct';
 
@@ -33,10 +33,10 @@ const AppLayout = () => {
     <StyledAppLayout>
       <SideNav />
       <StyledContainer>
-        <Route exact path='/app/products' component={Products} />
-        <Route path='/app/products/import' component={ImportProducts} />
-        <Route path='/app/products/new' component={AddProduct} />
-        <Route path='/app/products/:productId([0-9]+)' component={Product} />
+        <Route exact path="/app/products" component={Products} />
+        <Route path="/app/products/import" component={ImportProducts} />
+        <Route path="/app/products/new" component={AddProduct} />
+        <Route path="/app/products/:productId([0-9]+)" component={Product} />
       </StyledContainer>
     </StyledAppLayout>
   );

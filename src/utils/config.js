@@ -1,3 +1,3 @@
 export default {
-  apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:3030',
+  apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:8000/graphql',
 };

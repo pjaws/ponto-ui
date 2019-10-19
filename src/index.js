@@ -1,16 +1,20 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import configureStore from './store';
-import App from './containers/App';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
+
+import App from './components/App';
+import config from './utils/config';
 import * as serviceWorker from './serviceWorker';
 
-const store = configureStore();
+const client = new ApolloClient({
+  uri: config.apiBaseUrl,
+});
 
 render(
-  <Provider store={store}>
+  <ApolloProvider client={client}>
     <App />
-  </Provider>,
+  </ApolloProvider>,
   document.getElementById('root'),
 );
 

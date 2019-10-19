@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import AppPageHeader from './AppPageHeader';
-import AppPageSection from './AppPageSection';
-import Card from './Card';
-import Container from './Container';
-import Column from './Column';
+import AppPageHeader from '../components/AppPageHeader';
+import AppPageSection from '../components/AppPageSection';
+import Card from '../components/Card';
+import Container from '../components/Container';
+import Column from '../components/Column';
 
 const StyledProductImageContainer = styled.div`
   margin-bottom: 1rem;
@@ -23,9 +23,9 @@ const Product = ({ product, getProduct }) => {
       <AppPageHeader title={product.title} />
       <AppPageSection>
         <Card>
-          <Container direction='row'>
-            <Column width='66%'></Column>
-            <Column width='34%'>
+          <Container direction="row">
+            <Column width="66%"></Column>
+            <Column width="34%">
               <StyledProductImageContainer>
                 <img src={product.images[0].src} alt={`${product.title} 1`} />
               </StyledProductImageContainer>
